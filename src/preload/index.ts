@@ -1,22 +1,12 @@
 import { electronAPI } from '@electron-toolkit/preload';
-import { contextBridge, ipcRenderer } from 'electron';
-import { IpcChannel } from '@shared/ipcChannel';
+import { contextBridge } from 'electron';
+import { windowApi } from './api/windowApi';
+import mcpApi from './api/mcpApi';
 
+// 自定义 API 的集合
 const api = {
-  test: (input: string): Promise<void> => {
-    return ipcRenderer.invoke(IpcChannel.TEST, input);
-  },
-  // 切换置顶，不需要返回值
-  toggleAlwaysOnTop: (): Promise<boolean|null> => {
-    return ipcRenderer.invoke(IpcChannel.ToggleAlwaysOnTop);
-  },
-  minimizeWindow: (): Promise<void> => {
-    return ipcRenderer.invoke(IpcChannel.MinimizeWindow);
-  },
-  // 关闭窗口/退出应用
-  closeWindow: (): Promise<void> => {
-    return ipcRenderer.invoke(IpcChannel.CloseWindow);
-  },
+  window: windowApi,
+  mcp: mcpApi,
 };
 
 if (process.contextIsolated) {

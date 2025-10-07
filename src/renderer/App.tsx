@@ -1,8 +1,8 @@
-import './App.css';
+import './global.css';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TabEnum, TabEnumType } from './enums/TabEnum';
-import TopNavBar from './components/TopNavBar/TopNavBar';
+import Index from './components/TopNavBar';
 
 const AppContainer = styled.div`
   border: none;
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <AppContainer>
-      <TopNavBar currentTab={currentTab} onTabChange={setCurrentTab} />
+      <Index currentTab={currentTab} onTabChange={setCurrentTab} />
       <AppContent>
         {currentTab === TabEnum.Chat && <div>终端助手内容</div>}
         {currentTab === TabEnum.Memory && <div>流程资产内容</div>}

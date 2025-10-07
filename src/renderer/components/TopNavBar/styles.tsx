@@ -13,23 +13,26 @@ export const TabsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: flex-end;
   gap: 4px;
+  border-bottom: 1px solid #e8e8e8;
+  overflow: hidden;
 `;
 
 export const Tab = styled.div<{ active?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100%;
   padding: 0 16px;
-  line-height: 32px;
-  min-width: 80px;
+  margin-top: 2px;
+  height: 32px;
+  min-width: 96px;
   cursor: pointer;
-  border-radius: 8px 8px 0 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-radius: 12px 12px 0 0;
   -webkit-app-region: no-drag;
   background-color: white;
+  transform: ${({ active }) => (active ? 'translateY(0)' : 'translateY(3px)')};
+  transition: all 0.15s ease-in-out;
   color: ${({ active }) => (active ? 'black' : '#9c9c9c')};
 
   &:hover {
@@ -47,7 +50,7 @@ export const WindowControls = styled.div`
 export const ControlCircle = styled.button<{ color: string; active: boolean }>`
   width: 20px;
   height: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   border-radius: 50%;
   background-color: ${({ color }) => color};
   border: none;
