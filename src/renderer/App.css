@@ -1,62 +1,136 @@
-/*
- * @NOTE: Prepend a `~` to css file paths that are in your node_modules
- *        See https://github.com/webpack-contrib/sass-loader#imports
- */
-body {
-  position: relative;
-  color: white;
-  height: 100vh;
-  background: linear-gradient(
-    200.96deg,
-    #fedc2a -29.09%,
-    #dd5789 51.77%,
-    #7a2c9e 129.35%
-  );
-  font-family: sans-serif;
-  overflow-y: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@import './assets/styles/variables.css';
+@import './assets/styles/animations.css';
+@import './assets/styles/satoshi.css';
+@import './assets/styles/consolas.css';
+
+* {
+  box-sizing: border-box;
 }
 
-button {
-  background-color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
+html {
+  font-family: "Satoshi-Variable", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary-color-900);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  outline: none;
   border: none;
-  appearance: none;
-  font-size: 1.3rem;
-  box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
-    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
-  transition: all ease-in 0.1s;
-  cursor: pointer;
-  opacity: 0.9;
+  background: transparent !important;
 }
 
-button:hover {
-  transform: scale(1.05);
-  opacity: 1;
+.allows-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
-li {
-  list-style: none;
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-a {
-  text-decoration: none;
-  height: fit-content;
-  width: fit-content;
-  margin: 10px;
+*::selection {
 }
 
-a:hover {
-  opacity: 1;
-  text-decoration: none;
+.allows-select::selection,
+.allows-select *::selection {
+  background-color: var(--primary-color-400);
+  color: var(--primary-color-900);
 }
 
-.Hello {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
+.no-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+*::-webkit-scrollbar {
+  width: 0.75rem;
+  height: 0.5rem;
+  animation: fade-in 1s ease-in-out;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 1rem;
+  background: var(--primary-color-200);
+  animation: fade-in 1s ease-in-out;
+}
+*::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background: var(--primary-color-400);
+}
+*::-webkit-scrollbar-thumb:hover{
+  background: var(--primary-color-400)
+}
+*::-webkit-scrollbar-thumb:active{
+  background: var(--primary-color-400)
+}
+
+.medium-scroll-bar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.thin-scroll-bar::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+* {
+  line-height: 1.25;
+  color: inherit;
+  font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#root {
+  display: block;
+  margin: 0;
+  height: 100%;
+  max-height: none;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
 }

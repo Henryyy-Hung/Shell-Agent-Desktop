@@ -1,50 +1,44 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
 import './App.css';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { TabEnum, TabEnumType } from './enums/TabEnum';
+import TopNavBar from './components/TopNavBar/TopNavBar';
 
-function Hello() {
+const AppContainer = styled.div`
+  border: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 6px;
+  background-color: #c9cfd9;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+`;
+
+const AppContent = styled.div`
+  flex: 1 1 0;
+  padding: 16px;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 0 12px 12px 12px;
+`;
+
+// 主组件
+function App() {
+  const [currentTab, setCurrentTab] = useState<TabEnumType>(TabEnum.Chat);
+
   return (
-    <div>
-      <div className="Hello">
-        <img width="200" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="folded hands">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
-    </div>
+    <AppContainer>
+      <TopNavBar currentTab={currentTab} onTabChange={setCurrentTab} />
+      <AppContent>
+        {currentTab === TabEnum.Chat && <div>终端助手内容</div>}
+        {currentTab === TabEnum.Memory && <div>流程资产内容</div>}
+        {currentTab === TabEnum.Settings && <div>设置内容</div>}
+      </AppContent>
+    </AppContainer>
   );
 }
 
-export default function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Hello />} />
-      </Routes>
-    </Router>
-  );
-}
+export default App;
