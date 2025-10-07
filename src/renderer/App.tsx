@@ -1,8 +1,12 @@
 import './global.css';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import FontFaceObserver from 'fontfaceobserver';
 import { TabEnum, TabEnumType } from './enums/TabEnum';
-import Index from './components/TopNavBar';
+import TopNavBar from './components/TopNavBar';
+import ChatPage from './pages/ChatPage';
+import SOPPage from './pages/SopPage';
+import SettingsPage from './pages/SettingsPage';
 
 const AppContainer = styled.div`
   border: none;
@@ -20,7 +24,6 @@ const AppContainer = styled.div`
 const AppContent = styled.div`
   flex: 1 1 0;
   padding: 16px;
-  min-height: 200px;
   background-color: white;
   border-radius: 0 12px 12px 12px;
 `;
@@ -29,13 +32,32 @@ const AppContent = styled.div`
 function App() {
   const [currentTab, setCurrentTab] = useState<TabEnumType>(TabEnum.Chat);
 
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  useEffect(() => {
+    const loadFonts = () => {
+      const satoshiVariable = new FontFaceObserver('Satoshi-Variable', {
+        style: 'normal',
+      });
+      const consolas = new FontFaceObserver('Consolas', {
+        style: 'normal',
+      });
+      return Promise.all([satoshiVariable.load(), consolas.load()]);
+    };
+    // eslint-disable-next-line promise/catch-or-return
+    loadFonts().then(() => setFontsLoaded(true));
+  }, []);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <AppContainer>
-      <Index currentTab={currentTab} onTabChange={setCurrentTab} />
+      <TopNavBar currentTab={currentTab} onTabChange={setCurrentTab} />
       <AppContent>
-        {currentTab === TabEnum.Chat && <div>终端助手内容</div>}
-        {currentTab === TabEnum.Memory && <div>流程资产内容</div>}
-        {currentTab === TabEnum.Settings && <div>设置内容</div>}
+        {currentTab === TabEnum.Chat && <ChatPage />}
+        {currentTab === TabEnum.SOP && <SOPPage />}
+        {currentTab === TabEnum.Settings && <SettingsPage />}
       </AppContent>
     </AppContainer>
   );

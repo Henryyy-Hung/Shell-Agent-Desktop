@@ -1,6 +1,6 @@
 const TabEnum = {
   Chat: 'Chat',
-  Memory: 'Memory',
+  SOP: 'SOP',
   Settings: 'Settings',
 } as const;
 

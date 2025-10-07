@@ -18,11 +18,11 @@ interface Props {
 
 const tabTitles: Record<TabEnumType, string> = {
   [TabEnum.Chat]: '终端助手',
-  [TabEnum.Memory]: '流程资产',
+  [TabEnum.SOP]: '流程资产',
   [TabEnum.Settings]: '设置',
 };
 
-export default function Index({ currentTab, onTabChange }: Props) {
+export default function TopNavBar({ currentTab, onTabChange }: Props) {
   const [isAlwaysOnTop, setIsAlwaysOnTop] = useState(false);
 
   const toggleAlwaysOnTop = async () => {

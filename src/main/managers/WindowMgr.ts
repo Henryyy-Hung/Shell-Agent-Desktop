@@ -5,7 +5,7 @@ import { app, BrowserWindow, shell } from 'electron';
 import { resourceDirPath } from '@main/config/path';
 import { resolveHtmlPath } from '../util';
 
-class WindowService {
+class WindowMgr {
   private mainWindow: BrowserWindow | null = null;
 
   private readonly isDebug: boolean;
@@ -95,7 +95,7 @@ class WindowService {
   }
 }
 
-const windowService = new WindowService();
+const windowMgr = new WindowMgr();
 
 // eslint-disable-next-line import/prefer-default-export
-export { windowService };
+export { windowMgr };
