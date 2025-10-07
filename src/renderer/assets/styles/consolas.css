@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Consolas';
+    src: url('../fonts/Consolas/Consolas.eot') format('embedded-opentype'),
+    url('../fonts/Consolas/Consolas.woff2') format('woff2'),
+    url('../fonts/Consolas/Consolas.woff') format('woff'),
+    url('../fonts/Consolas/Consolas.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Consolas-Italic';
+    src: url('../fonts/Consolas/Consolas-Italic.eot') format('embedded-opentype'),
+    url('../fonts/Consolas/Consolas-Italic.woff2') format('woff2'),
+    url('../fonts/Consolas/Consolas-Italic.woff') format('woff'),
+    url('../fonts/Consolas/Consolas-Italic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Consolas-BoldItalic';
+    src: url('../fonts/Consolas/Consolas-BoldItalic.eot') format('embedded-opentype'),
+    url('../fonts/Consolas/Consolas-BoldItalic.woff2') format('woff2'),
+    url('../fonts/Consolas/Consolas-BoldItalic.woff') format('woff'),
+    url('../fonts/Consolas/Consolas-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Consolas-Bold';
+    src: url('../fonts/Consolas/Consolas-Bold.eot') format('embedded-opentype'),
+    url('../fonts/Consolas/Consolas-Bold.woff2') format('woff2'),
+    url('../fonts/Consolas/Consolas-Bold.woff') format('woff'),
+    url('../fonts/Consolas/Consolas-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

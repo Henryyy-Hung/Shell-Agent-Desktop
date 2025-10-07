@@ -1,0 +1,42 @@
+@import url(./colors.css);
+
+html {
+    --primary-color-50: var(--grey50);
+    --primary-color-100: var(--grey100);
+    --primary-color-200: var(--grey200);
+    --primary-color-300: var(--grey300);
+    --primary-color-400: var(--grey400);
+    --primary-color-500: var(--grey500);
+    --primary-color-600: var(--grey600);
+    --primary-color-700: var(--grey700);
+    --primary-color-800: var(--grey800);
+    --primary-color-900: var(--grey900);
+
+    --primary-bg-color: #DCE2E8;
+    --secondary-bg-color: var(--primary-color-100);
+    --tertiary-bg-color: var(--primary-color-50);
+
+    --primary-fg-color: var(--primary-color-50);
+    --secondary-fg-color: var(--primary-color-100);
+    --tertiary-fg-color: var(--primary-color-200);
+
+    --primary-text-color: var(--primary-color-900);
+    --secondary-text-color: var(--primary-color-600);
+    --tertiary-text-color: var(--primary-color-400);
+
+    --primary-highlight-color: #ff914c;
+    --secondary-highlight-color:  rgb(70, 114, 176);
+
+    --tab-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 25%);
+    --form-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 25%);
+
+    --toastify-color-info: #c3ccd3 !important;
+    --toastify-color-success: #b7c7ab !important;
+    --toastify-color-warning: #f3dcb0 !important;
+    --toastify-color-error: #c17e76 !important;
+
+    --toastify-icon-color-info: var(--toastify-color-info);
+    --toastify-icon-color-success: var(--toastify-color-success);
+    --toastify-icon-color-warning: var(--toastify-color-warning);
+    --toastify-icon-color-error: var(--toastify-color-error);
+}
