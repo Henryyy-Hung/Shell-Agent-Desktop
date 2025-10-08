@@ -4,7 +4,7 @@ import { RemoteClientEnum } from '@renderer/enums/RemoteClientEnum';
 
 const initialState: ChatConfig = {
   currentTopicId: null,
-  currentRemoteShell: RemoteClientEnum.MobaXterm,
+  currentRemoteShell: RemoteClientEnum.MOBAXTERM,
   webSearchEnabled: false,
 };
 

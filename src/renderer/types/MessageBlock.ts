@@ -1,7 +1,7 @@
-import { MessageBlockTypeEnumType } from '@renderer/enums/MessageBlockType';
+import { ChatContentTypeEnumType } from '@renderer/enums/ChatContentTypeEnum';
 
 interface MessageBlock {
-  type: MessageBlockTypeEnumType | undefined;
+  type: ChatContentTypeEnumType;
   rawContent: string;
   innerContent: string;
 }

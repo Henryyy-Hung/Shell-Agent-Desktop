@@ -2,9 +2,12 @@ import {
   MessageRoleEnumType,
   MessageRoleEnum,
 } from '@renderer/enums/MessageRoleEnum';
-import { MessageSubRoleEnumType } from '@renderer/enums/MessageSubRoleEnum';
+import {
+  ChatSessionEnum,
+  ChatSessionEnumType,
+} from '@renderer/enums/ChatSessionEnum';
 import { AysncStatusEnum } from '@renderer/enums/AysncStatusEnum';
-import { Message } from '@renderer/types/Message';
+import { ChatMessage } from '@renderer/types/ChatMessage';
 import IdUtil from '@renderer/utils/IdUtil';
 
 class MessageFactory {
@@ -12,34 +15,39 @@ class MessageFactory {
   private static createMessage(
     role: MessageRoleEnumType,
     content: string,
-    subRole?: MessageSubRoleEnumType,
-  ): Message {
+    session: ChatSessionEnumType,
+  ): ChatMessage {
     return {
       id: IdUtil.generateId(),
       role,
-      subRole,
+      session,
       content,
       status: AysncStatusEnum.IDLE,
       creationTime: Date.now(),
     };
   }
 
-  // 创建用户消息
-  public static createUserMessage(content: string): Message {
-    return this.createMessage(MessageRoleEnum.User, content);
+  public static createSystemMessage(content: string): ChatMessage {
+    return this.createMessage(
+      MessageRoleEnum.SYSTEM,
+      content,
+      ChatSessionEnum.SYSTEM_PROMPT,
+    );
   }
 
-  // 创建助手消息（可选 subRole）
+  public static createUserMessage(content: string): ChatMessage {
+    return this.createMessage(
+      MessageRoleEnum.USER,
+      content,
+      ChatSessionEnum.USER_QUERY,
+    );
+  }
+
   public static createAssistantMessage(
     content: string,
-    subRole?: MessageSubRoleEnumType,
-  ): Message {
-    return this.createMessage(MessageRoleEnum.Assistant, content, subRole);
-  }
-
-  // 创建系统消息
-  public static createSystemMessage(content: string): Message {
-    return this.createMessage(MessageRoleEnum.System, content);
+    session: ChatSessionEnumType,
+  ): ChatMessage {
+    return this.createMessage(MessageRoleEnum.ASSISTANT, content, session);
   }
 }
 

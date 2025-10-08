@@ -1,7 +1,7 @@
 const TabEnum = {
-  Chat: 'Chat',
-  SOP: 'SOP',
-  Settings: 'Settings',
+  CHAT: 'chat',
+  SOP: 'sop',
+  SETTINGS: 'settings',
 } as const;
 
 type TabEnumType = (typeof TabEnum)[keyof typeof TabEnum];

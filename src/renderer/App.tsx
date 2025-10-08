@@ -1,45 +1,15 @@
 import './global.css';
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import FontFaceObserver from 'fontfaceobserver';
+import { AppContainer, AppContent, AppHeader } from '@renderer/appStyles';
 import { TabEnum, TabEnumType } from './enums/TabEnum';
 import TopNavBar from './components/TopNavBar';
 import ChatPage from './pages/ChatPage';
 import SOPPage from './pages/SopPage';
 import SettingsPage from './pages/SettingsPage';
 
-const AppContainer = styled.div`
-  border: none;
-  overflow: hidden;
-  margin: 0;
-  padding: 6px;
-  background-color: #c9cfd9;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-`;
-
-const AppHeader = styled.div`
-  flex: 0 0 auto;
-`;
-
-const AppContent = styled.div`
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  background-color: white;
-  border-radius: 0 12px 12px 12px;
-  & > * {
-    height: 100%;
-  }
-`;
-
-// 主组件
 function App() {
-  const [currentTab, setCurrentTab] = useState<TabEnumType>(TabEnum.Chat);
+  const [currentTab, setCurrentTab] = useState<TabEnumType>(TabEnum.CHAT);
 
   const [fontsLoaded, setFontsLoaded] = useState(false);
   useEffect(() => {
@@ -68,9 +38,9 @@ function App() {
         onTabChange={setCurrentTab}
       />
       <AppContent>
-        {currentTab === TabEnum.Chat && <ChatPage />}
+        {currentTab === TabEnum.CHAT && <ChatPage />}
         {currentTab === TabEnum.SOP && <SOPPage />}
-        {currentTab === TabEnum.Settings && <SettingsPage />}
+        {currentTab === TabEnum.SETTINGS && <SettingsPage />}
       </AppContent>
     </AppContainer>
   );

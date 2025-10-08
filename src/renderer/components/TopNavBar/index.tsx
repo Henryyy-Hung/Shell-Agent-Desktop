@@ -17,9 +17,9 @@ interface Props {
 }
 
 const tabTitles: Record<TabEnumType, string> = {
-  [TabEnum.Chat]: '终端助手',
+  [TabEnum.CHAT]: '终端助手',
   [TabEnum.SOP]: '流程资产',
-  [TabEnum.Settings]: '设置',
+  [TabEnum.SETTINGS]: '设置',
 };
 
 export default function TopNavBar({ currentTab, onTabChange }: Props) {

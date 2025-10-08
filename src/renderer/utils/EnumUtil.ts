@@ -16,9 +16,7 @@ class EnumUtils {
   /**
    * 拿到所有 [key, value]
    */
-  static members<E extends object>(
-    enm: E
-  ): Array<[keyof E, E[keyof E]]> {
+  static members<E extends object>(enm: E): Array<[keyof E, E[keyof E]]> {
     return Object.entries(enm) as Array<[keyof E, E[keyof E]]>;
   }
 

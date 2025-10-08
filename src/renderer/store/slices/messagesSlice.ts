@@ -1,10 +1,10 @@
 // messagesSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Message } from '@renderer/types/Message';
+import { ChatMessage } from '@renderer/types/ChatMessage';
 import { AysncStatusEnumType } from '@renderer/enums/AysncStatusEnum';
 
 interface MessagesState {
-  [id: string]: Message;
+  [id: string]: ChatMessage;
 }
 
 const initialState: MessagesState = {};
@@ -13,11 +13,11 @@ const messagesSlice = createSlice({
   name: 'messages',
   initialState,
   reducers: {
-    insertMessage: (state, action: PayloadAction<Message>) => {
+    insertMessage: (state, action: PayloadAction<ChatMessage>) => {
       const message = action.payload;
       state[message.id] = message;
     },
-    updateMessage: (state, action: PayloadAction<Message>) => {
+    updateMessage: (state, action: PayloadAction<ChatMessage>) => {
       const message = action.payload;
       if (state[message.id]) {
         state[message.id] = message;

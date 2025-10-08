@@ -1,6 +1,6 @@
 // 1. 添加消息并同步到对应 Topic
 import { AppThunk } from '@renderer/store';
-import { Message } from '@renderer/types/Message';
+import { ChatMessage } from '@renderer/types/ChatMessage';
 import {
   insertMessage,
   updateMessage,
@@ -12,7 +12,7 @@ import {
 import { Topic } from '@renderer/types/Topic';
 
 export const addMessageAndSyncToTopic =
-  (topicId: string, message: Message): AppThunk =>
+  (topicId: string, message: ChatMessage): AppThunk =>
   (dispatch, getState) => {
     // 插入消息
     dispatch(insertMessage(message));
@@ -23,7 +23,7 @@ export const addMessageAndSyncToTopic =
 
 // 2. 更新消息并（如果必要）同步到 Topic 的更新时间等信息
 export const updateMessageAndSyncToTopic =
-  (topicId: string, message: Message): AppThunk =>
+  (topicId: string, message: ChatMessage): AppThunk =>
   (dispatch, getState) => {
     dispatch(updateMessage(message));
 

@@ -1,6 +1,6 @@
 const RemoteClientEnum = {
-  MobaXterm: 'MobaXterm',
-  Xshell: 'Xshell',
+  MOBAXTERM: 'MobaXterm',
+  XSHELL: 'Xshell',
 } as const;
 
 type RemoteClientEnumType =

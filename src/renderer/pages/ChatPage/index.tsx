@@ -1,31 +1,30 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ChatInputField from '@renderer/components/ChatInputField';
-import { selectCurrentTopic } from '@renderer/store/selectors/topicsSelectors';
-import { Topic } from '@renderer/types/Topic';
 import { insertTopic } from '@renderer/store/slices/topicsSlice';
 import { TopicFactory } from '@renderer/factory/TopicFactory';
 import { MessageFactory } from '@renderer/factory/MessageFactory';
 import { addMessageAndSyncToTopic } from '@renderer/store/thunks/messagesThunks';
-import { AppDispatch, RootState } from '@renderer/store';
+import { AppDispatch } from '@renderer/store';
 import { setCurrentTopicId } from '@renderer/store/slices/chatConfigSlice';
-import { selectMessagesByIds } from '@renderer/store/selectors/messagesSelectors';
 import ChatMessageBlock from '@renderer/components/ChatMessageBlock';
+import { ChatSessionEnum } from '@renderer/enums/ChatSessionEnum';
+import { selectCurrentTopicId } from '@renderer/store/selectors/chatConfigSelectors';
+import { useTopicDisplayedMessages } from '@renderer/hooks/useTopicDisplayedMessages';
+import { selectCurrentTopic } from '@renderer/store/selectors/topicsSelectors';
 import { ChatContent, Container, ChatOperation } from './styles';
 
 export default function Page() {
-  const currentTopic: Topic | null = useSelector(selectCurrentTopic);
+  const currentTopicId = useSelector(selectCurrentTopicId);
+  const currentTopic = useSelector(selectCurrentTopic);
+  const messageSubmitEnabled = useMemo(() => {
+    return !(currentTopic && !currentTopic.isProcessing);
+  }, [currentTopic]);
+  const displayedMessages = useTopicDisplayedMessages({
+    topicId: currentTopicId,
+  });
 
   const dispatch = useDispatch<AppDispatch>();
-
-  const messageSubmitEnabled = useMemo(() => {
-    return !(currentTopic && currentTopic.isProcessing);
-  }, [currentTopic]);
-
-  // 获取当前话题的所有消息
-  const messages = useSelector((state: RootState) =>
-    currentTopic ? selectMessagesByIds(state, currentTopic.messageIds) : [],
-  );
 
   useEffect(() => {
     const topic = TopicFactory.create('new topic');
@@ -36,16 +35,28 @@ export default function Page() {
     dispatch(addMessageAndSyncToTopic(topic.id, userMessage));
 
     const assistantMessage = MessageFactory.createAssistantMessage(
-      'You are a helpful assistant.<tool_call> hello world </tool_call> <plan>nice to meet you</plan>',
-      undefined,
+      '<think>Before I decide, I need to provide a plan.</think> <plan>nice to meet you</plan><tool_use> hello world </tool_use> ',
+      ChatSessionEnum.AGENT_COMMON,
     );
     dispatch(addMessageAndSyncToTopic(topic.id, assistantMessage));
+
+    const assistantMessage1 = MessageFactory.createAssistantMessage(
+      '<tool_use_result> received </tool_use_result>',
+      ChatSessionEnum.AGENT_COMMON,
+    );
+    dispatch(addMessageAndSyncToTopic(topic.id, assistantMessage1));
+
+    const assistantMessage2 = MessageFactory.createAssistantMessage(
+      '<final_answer> final answer </final_answer>',
+      ChatSessionEnum.AGENT_COMMON,
+    );
+    dispatch(addMessageAndSyncToTopic(topic.id, assistantMessage2));
   }, [dispatch]);
 
   return (
     <Container>
       <ChatContent>
-        {messages.map((message) => (
+        {displayedMessages.map((message) => (
           <ChatMessageBlock key={message.id} message={message} />
         ))}
       </ChatContent>

@@ -1,7 +1,7 @@
 const MessageRoleEnum = {
-  User: 'User',
-  Assistant: 'Assistant',
-  System: 'System',
+  USER: 'user',
+  ASSISTANT: 'assistant',
+  SYSTEM: 'system',
 } as const;
 
 type MessageRoleEnumType =
