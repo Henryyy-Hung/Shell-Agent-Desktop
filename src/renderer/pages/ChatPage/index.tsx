@@ -13,9 +13,7 @@ import { selectMessagesByIds } from '@renderer/store/selectors/messagesSelectors
 import ChatMessageBlock from '@renderer/components/ChatMessageBlock';
 import { ChatContent, Container, ChatOperation } from './styles';
 
-interface Props {}
-
-export default function Page({}: Props) {
+export default function Page() {
   const currentTopic: Topic | null = useSelector(selectCurrentTopic);
 
   const dispatch = useDispatch<AppDispatch>();

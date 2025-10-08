@@ -4,8 +4,6 @@ import { MessageBlockTypeEnum } from '@renderer/enums/MessageBlockType';
 import { MessageBlock } from '@renderer/types/MessageBlock';
 import { Message } from '@renderer/types/Message';
 
-
-
 // 样式区
 const MessageContainer = styled.div`
   display: flex;
