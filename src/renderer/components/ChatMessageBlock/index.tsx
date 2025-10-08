@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { MessageBlockTypeEnum } from '@renderer/enums/MessageBlockType';
 import { MessageBlock } from '@renderer/types/MessageBlock';
+import { Message } from '@renderer/types/Message';
 
-type MessageBlockProps = {
-  content: string;
-};
+
 
 // 样式区
 const MessageContainer = styled.div`
@@ -37,8 +36,7 @@ const ToolCallBlock = styled.div`
   background-color: var(--primary-color-50);
   padding: 1rem;
   border-radius: 0.5rem;
-  font-family: monospace;
-  white-space: pre-wrap;
+  font-weight: bold;
 `;
 
 const PlanBlock = styled.div`
@@ -132,8 +130,13 @@ const parseCustomTags = (input: string): MessageBlock[] => {
   return blocks;
 };
 
-const ChatMessageBlock: React.FC<MessageBlockProps> = ({ content }) => {
-  const blocks = parseCustomTags(content);
+type MessageBlockProps = {
+  message: Message;
+};
+const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
+  const blocks = useMemo(() => {
+    return parseCustomTags(message?.content || '');
+  }, [message]);
 
   return (
     <MessageContainer>

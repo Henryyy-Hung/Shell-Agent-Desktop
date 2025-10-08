@@ -15,5 +15,6 @@ export const selectMessagesByIds = (
 ): Message[] => {
   return ids
     .map((id) => state.messages[id])
-    .filter((message): message is Message => message !== undefined);
+    .filter((message): message is Message => message !== undefined)
+    .sort((a, b) => a.creationTime - b.creationTime);
 };
