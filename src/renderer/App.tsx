@@ -21,11 +21,20 @@ const AppContainer = styled.div`
   justify-content: stretch;
 `;
 
+const AppHeader = styled.div`
+  flex: 0 0 auto;
+`;
+
 const AppContent = styled.div`
   flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
   padding: 16px;
   background-color: white;
   border-radius: 0 12px 12px 12px;
+  & > * {
+    height: 100%;
+  }
 `;
 
 // 主组件
@@ -53,7 +62,11 @@ function App() {
 
   return (
     <AppContainer>
-      <TopNavBar currentTab={currentTab} onTabChange={setCurrentTab} />
+      <AppHeader
+        as={TopNavBar}
+        currentTab={currentTab}
+        onTabChange={setCurrentTab}
+      />
       <AppContent>
         {currentTab === TabEnum.Chat && <ChatPage />}
         {currentTab === TabEnum.SOP && <SOPPage />}

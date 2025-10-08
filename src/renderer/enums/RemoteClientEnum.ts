@@ -6,4 +6,5 @@ const RemoteClientEnum = {
 type RemoteClientEnumType =
   (typeof RemoteClientEnum)[keyof typeof RemoteClientEnum];
 
-export { RemoteClientEnum, RemoteClientEnumType };
+export type { RemoteClientEnumType };
+export { RemoteClientEnum };

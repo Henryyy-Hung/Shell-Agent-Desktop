@@ -6,4 +6,5 @@ const TabEnum = {
 
 type TabEnumType = (typeof TabEnum)[keyof typeof TabEnum];
 
-export { TabEnum, TabEnumType };
+export type { TabEnumType };
+export { TabEnum };

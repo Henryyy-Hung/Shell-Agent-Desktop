@@ -61,13 +61,15 @@ export const ControlCircle = styled.button<{ color: string; active: boolean }>`
   justify-content: center;
   padding: 0;
 
+  &:hover svg {
+    stroke: rgba(255, 255, 255, 0.7) !important;
+  }
+
   & svg {
     width: 12px !important;
     height: 12px !important;
-    stroke: ${({ active }) => (active ? '#fff' : 'rgba(0,0,0,0.3)')} !important;
-  }
-
-  &:hover svg {
-    stroke: white !important;
+    stroke: ${({ active }) =>
+      active ? '#fff' : 'rgba(0,0,0,0.45)'} !important;
+    stroke-width: 3px !important;
   }
 `;

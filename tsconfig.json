@@ -20,7 +20,7 @@
       "@renderer/*": ["./src/renderer/*"],
       "@shared/*": ["./src/shared/*"],
       "@logger": ["./src/main/services/LoggerService"]
-    }
+    },
   },
   "exclude": ["test", "release/build", "release/app/dist", ".erb/dll"]
 }
