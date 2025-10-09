@@ -10,6 +10,7 @@ export const ChatContent = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 1 0;
+  gap: 16px;
 `;
 
 export const ChatOperation = styled.div`
