@@ -1,9 +1,10 @@
 const RemoteClientEnum = {
-  MobaXterm: 'MobaXterm',
-  Xshell: 'Xshell',
+  MOBAXTERM: 'MobaXterm',
+  XSHELL: 'Xshell',
 } as const;
 
 type RemoteClientEnumType =
   (typeof RemoteClientEnum)[keyof typeof RemoteClientEnum];
 
-export { RemoteClientEnum, RemoteClientEnumType };
+export type { RemoteClientEnumType };
+export { RemoteClientEnum };

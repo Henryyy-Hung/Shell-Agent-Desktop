@@ -14,6 +14,7 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     'react/function-component-definition': 'off',
+    'import/prefer-default-export': 'off',
     'max-len': ['error', { code: 120 }],
   },
   parserOptions: {

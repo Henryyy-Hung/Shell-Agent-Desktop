@@ -1,9 +1,10 @@
 const TabEnum = {
-  Chat: 'Chat',
-  Memory: 'Memory',
-  Settings: 'Settings',
+  CHAT: 'chat',
+  SOP: 'sop',
+  SETTINGS: 'settings',
 } as const;
 
 type TabEnumType = (typeof TabEnum)[keyof typeof TabEnum];
 
-export { TabEnum, TabEnumType };
+export type { TabEnumType };
+export { TabEnum };
