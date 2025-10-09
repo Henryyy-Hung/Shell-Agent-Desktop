@@ -5,6 +5,7 @@ import { selectTopicById } from '@renderer/store/selectors/topicsSelectors';
 import { selectMessagesByIds } from '@renderer/store/selectors/messagesSelectors';
 import CustomTagParseUtil from '@renderer/utils/CustomTagParseUtil';
 import { DisplayedChatMessage } from '@renderer/types/DisplayedChatMessage';
+import { ChatMessage } from '@renderer/types/ChatMessage';
 
 function useTopicDisplayedMessages({
   topicId,
@@ -14,8 +15,12 @@ function useTopicDisplayedMessages({
   const selectedTopic = useSelector((state: RootState) =>
     selectTopicById(state, topicId || ''),
   );
-  const messages = useSelector((state: RootState) =>
-    selectedTopic ? selectMessagesByIds(state, selectedTopic.messageIds) : [],
+  const EMPTY_MESSAGES: ChatMessage[] = [];
+  const messages = useSelector(
+    (state: RootState) =>
+      selectedTopic
+        ? selectMessagesByIds(state, selectedTopic.messageIds)
+        : EMPTY_MESSAGES, // 保持引用稳定
   );
 
   const displayedMessages = useMemo<DisplayedChatMessage[]>(() => {
@@ -23,7 +28,10 @@ function useTopicDisplayedMessages({
     const result: DisplayedChatMessage[] = [];
     let currentGroup: DisplayedChatMessage | null = null;
     messages.forEach((msg) => {
-      const blocks = CustomTagParseUtil.parseCustomTags(msg.content || '');
+      const blocks = CustomTagParseUtil.parseCustomTags(
+        msg.id,
+        msg.content || '',
+      );
       if (
         currentGroup &&
         currentGroup.session === msg.session &&

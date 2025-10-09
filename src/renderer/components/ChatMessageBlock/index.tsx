@@ -50,6 +50,7 @@ const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
             case ChatContentTypeEnum.THINK:
               return (
                 <DetailSummary
+                  key={block.id}
                   name="hw-mcp-shell-toolkit : get_sop_list"
                   status="已完成"
                   detailText={block.innerContent}
@@ -58,6 +59,7 @@ const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
             case ChatContentTypeEnum.PLAN:
               return (
                 <DetailSummary
+                  key={block.id}
                   name="制订计划"
                   status="已完成"
                   detailText={block.innerContent}
@@ -66,6 +68,7 @@ const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
             case ChatContentTypeEnum.TOOL_USE:
               return (
                 <DetailSummary
+                  key={block.id}
                   name="工具调用"
                   status="已完成"
                   detailText={block.innerContent}
@@ -74,15 +77,24 @@ const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
             case ChatContentTypeEnum.TOOL_USE_RESULT:
               return (
                 <DetailSummary
+                  key={block.id}
                   name="工具调用结果"
                   status="已完成"
                   detailText={block.innerContent}
                 />
               );
             case ChatContentTypeEnum.FINAL_ANSWER:
-              return <MarkdownBlock>{block.innerContent}</MarkdownBlock>;
+              return (
+                <MarkdownBlock key={block.id}>
+                  {block.innerContent}
+                </MarkdownBlock>
+              );
             default:
-              return <MarkdownBlock>{block.rawContent}</MarkdownBlock>;
+              return (
+                <MarkdownBlock key={block.id}>
+                  {block.rawContent}
+                </MarkdownBlock>
+              );
           }
         })}
       </SessionMessages>

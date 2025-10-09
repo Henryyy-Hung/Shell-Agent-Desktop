@@ -19,7 +19,7 @@ export const TabsWrapper = styled.div`
   overflow: hidden;
 `;
 
-export const Tab = styled.div<{ active?: boolean }>`
+export const Tab = styled.div<{ $active?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,9 +31,9 @@ export const Tab = styled.div<{ active?: boolean }>`
   border-radius: 12px 12px 0 0;
   -webkit-app-region: no-drag;
   background-color: white;
-  transform: ${({ active }) => (active ? 'translateY(0)' : 'translateY(3px)')};
+  transform: ${({ $active }) => ($active ? 'translateY(0)' : 'translateY(3px)')};
   transition: all 0.15s ease-in-out;
-  color: ${({ active }) => (active ? 'black' : '#9c9c9c')};
+  color: ${({ $active }) => ($active ? 'black' : '#9c9c9c')};
 
   &:hover {
     background-color: white;
@@ -47,7 +47,7 @@ export const WindowControls = styled.div`
   -webkit-app-region: no-drag;
 `;
 
-export const ControlCircle = styled.button<{ color: string; active: boolean }>`
+export const ControlCircle = styled.button<{ color: string; $active: boolean }>`
   width: 20px;
   height: 20px;
   margin-bottom: 6px;
@@ -68,8 +68,8 @@ export const ControlCircle = styled.button<{ color: string; active: boolean }>`
   & svg {
     width: 12px !important;
     height: 12px !important;
-    stroke: ${({ active }) =>
-      active ? '#fff' : 'rgba(0,0,0,0.45)'} !important;
+    stroke: ${({ $active }) =>
+      $active ? '#fff' : 'rgba(0,0,0,0.45)'} !important;
     stroke-width: 3px !important;
   }
 `;

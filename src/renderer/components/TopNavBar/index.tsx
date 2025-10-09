@@ -44,7 +44,7 @@ export default function TopNavBar({ currentTab, onTabChange }: Props) {
         {Object.values(TabEnum).map((tab) => (
           <Tab
             key={tab}
-            active={currentTab === tab}
+            $active={currentTab === tab}
             onClick={() => onTabChange(tab)}
           >
             {tabTitles[tab]}
@@ -54,15 +54,15 @@ export default function TopNavBar({ currentTab, onTabChange }: Props) {
       <WindowControls>
         <ControlCircle
           color="#00AEEF"
-          active={isAlwaysOnTop}
+          $active={isAlwaysOnTop}
           onClick={toggleAlwaysOnTop}
         >
           <IconPin />
         </ControlCircle>
-        <ControlCircle color="#fbbd2e" active={false} onClick={minimizeWindow}>
+        <ControlCircle color="#fbbd2e" $active={false} onClick={minimizeWindow}>
           <IconMinimize />
         </ControlCircle>
-        <ControlCircle color="#FF5F57" active={false} onClick={closeWindow}>
+        <ControlCircle color="#FF5F57" $active={false} onClick={closeWindow}>
           <IconClose />
         </ControlCircle>
       </WindowControls>

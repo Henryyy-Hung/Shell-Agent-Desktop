@@ -106,13 +106,9 @@
     "fontfaceobserver": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.3.0",
-    "remark-gfm": "^4.0.1",
-    "styled-components": "^6.1.19",
-    "winston": "^3.18.3",
-    "winston-daily-rotate-file": "^5.0.0"
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@electron/rebuild": "^3.7.1",

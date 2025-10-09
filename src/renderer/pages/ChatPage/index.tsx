@@ -16,10 +16,13 @@ import { ChatContent, Container, ChatOperation } from './styles';
 
 export default function Page() {
   const currentTopicId = useSelector(selectCurrentTopicId);
+
   const currentTopic = useSelector(selectCurrentTopic);
+
   const messageSubmitEnabled = useMemo(() => {
     return !(currentTopic && !currentTopic.isProcessing);
   }, [currentTopic]);
+
   const displayedMessages = useTopicDisplayedMessages({
     topicId: currentTopicId,
   });
@@ -35,7 +38,8 @@ export default function Page() {
     dispatch(addMessageAndSyncToTopic(topic.id, userMessage));
 
     const assistantMessage = MessageFactory.createAssistantMessage(
-      '<think>Before I decide, I need to provide a plan.</think> <plan>nice to meet you</plan><tool_use> hello world </tool_use> ',
+      '<think>Before I decide, I need to provide a plan.</think>' +
+        '<plan>nice to meet you</plan><tool_use> hello world </tool_use>',
       ChatSessionEnum.AGENT_COMMON,
     );
     dispatch(addMessageAndSyncToTopic(topic.id, assistantMessage));

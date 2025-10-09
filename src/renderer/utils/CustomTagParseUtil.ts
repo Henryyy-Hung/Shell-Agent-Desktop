@@ -23,7 +23,12 @@ class CustomTagParseUtil {
     return new RegExp(pattern, 'i');
   }
 
-  public static parseCustomTags = (input: string): MessageBlock[] => {
+  public static parseCustomTags = (
+    messageId: string,
+    input: string,
+  ): MessageBlock[] => {
+    let count = 0;
+
     const blocks: MessageBlock[] = [];
 
     let remaining = input;
@@ -39,10 +44,12 @@ class CustomTagParseUtil {
       const before = remaining.slice(0, match.index);
       if (before.trim()) {
         blocks.push({
+          id: `${messageId}-block-${count}`,
           type: ChatContentTypeEnum.NORMAL,
           rawContent: before,
           innerContent: before,
         });
+        count += 1;
       }
 
       const tagName = match.groups?.tag?.toLowerCase();
@@ -52,12 +59,14 @@ class CustomTagParseUtil {
         CustomTagParseUtil.specialTags.includes(tagName);
 
       blocks.push({
+        id: `${messageId}-block-${count}`,
         type: isTagValid
           ? (tagName as ChatContentTypeEnumType)
           : ChatContentTypeEnum.NORMAL,
         rawContent: match[0],
         innerContent: innerContent.trim(),
       });
+      count += 1;
 
       remaining = remaining.slice(match.index + match[0].length);
       match = regex.exec(remaining);
@@ -65,6 +74,7 @@ class CustomTagParseUtil {
 
     if (remaining.trim()) {
       blocks.push({
+        id: `${messageId}-block-${count}`,
         type: ChatContentTypeEnum.NORMAL,
         rawContent: remaining,
         innerContent: remaining,
