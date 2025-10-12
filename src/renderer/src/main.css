@@ -1,0 +1,136 @@
+@import './assets/styles/variables.css';
+@import './assets/styles/animations.css';
+@import './assets/styles/satoshi.css';
+@import './assets/styles/consolas.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Satoshi-Variable", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary-color-900);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  background: transparent !important;
+}
+
+.allows-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.no-select {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+*::selection {
+}
+
+.allows-select::selection,
+.allows-select *::selection {
+  background-color: var(--primary-color-400);
+  color: var(--primary-color-900);
+}
+
+.no-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+*::-webkit-scrollbar {
+  width: 0.75rem;
+  height: 0.5rem;
+  animation: fade-in 1s ease-in-out;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 1rem;
+  background: var(--primary-color-200);
+  animation: fade-in 1s ease-in-out;
+}
+*::-webkit-scrollbar-thumb{
+  border-radius: 1rem;
+  background: var(--primary-color-400);
+}
+*::-webkit-scrollbar-thumb:hover{
+  background: var(--primary-color-400)
+}
+*::-webkit-scrollbar-thumb:active{
+  background: var(--primary-color-400)
+}
+
+.medium-scroll-bar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.thin-scroll-bar::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+* {
+  line-height: 1.25;
+  color: inherit;
+  font-size: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+#root {
+  display: block;
+  margin: 0;
+  height: 100%;
+  max-height: none;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+}
