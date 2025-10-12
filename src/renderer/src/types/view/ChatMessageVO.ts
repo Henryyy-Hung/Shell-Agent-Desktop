@@ -1,11 +1,11 @@
 import { MessageRoleEnumType } from '@renderer/enums/MessageRoleEnum'
-import { ChatSessionEnumType } from '@renderer/enums/ChatSessionEnum'
+import { MessageOwnerEnumType } from '@renderer/enums/MessageOwnerEnum'
 import { ChatMessageBlockVO } from '@renderer/types/view/ChatMessageBlockVO'
 
 interface ChatMessageVO {
   id: string
   role: MessageRoleEnumType
-  session: ChatSessionEnumType
+  owner: MessageOwnerEnumType
   messageBlocks: ChatMessageBlockVO[]
   creationTime: number
 }

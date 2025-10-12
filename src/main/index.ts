@@ -2,11 +2,13 @@ import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../build/icon.png?asset'
-import { registerIpc } from './ipcRegistry' // 保留你原来的 IPC 注册
+import { registerIpc } from './ipcRegistry'
+import dotenv from 'dotenv'
+dotenv.config()
 
 function createMainWindow(): void {
   let mainWindow: BrowserWindow | null = new BrowserWindow({
-    show: true,
+    show: false,
     width: 520,
     height: 800,
     frame: false,

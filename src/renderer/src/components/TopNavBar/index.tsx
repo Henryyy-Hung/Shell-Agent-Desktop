@@ -19,16 +19,16 @@ const tabTitles: Record<TabEnumType, string> = {
 export default function TopNavBar({ currentTab, onTabChange }: Props) {
   const [isAlwaysOnTop, setIsAlwaysOnTop] = useState(false)
 
-  const toggleAlwaysOnTop = async () => {
+  const toggleAlwaysOnTop = async (): Promise<void> => {
     const currentState = (await window.api.window.toggleAlwaysOnTop()) || false
     setIsAlwaysOnTop(currentState)
   }
 
-  const minimizeWindow = async () => {
+  const minimizeWindow = async (): Promise<void> => {
     await window.api.window.minimizeWindow()
   }
 
-  const closeWindow = async () => {
+  const closeWindow = async (): Promise<void> => {
     await window.api.window.closeWindow()
   }
 

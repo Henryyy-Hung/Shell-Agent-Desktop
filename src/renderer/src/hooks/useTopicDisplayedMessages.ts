@@ -21,13 +21,13 @@ function useTopicDisplayedMessages({ topicId }: { topicId: string | null }): Cha
     let currentGroup: ChatMessageVO | null = null
     messages.forEach((msg) => {
       const blocks = CustomTagParseUtil.parseCustomTags(msg.id, msg.content || '')
-      if (currentGroup && currentGroup.session === msg.session) {
+      if (currentGroup && currentGroup.owner === msg.owner) {
         currentGroup.messageBlocks.push(...blocks)
       } else {
         currentGroup = {
           id: msg.id,
           role: msg.role,
-          session: msg.session,
+          owner: msg.owner,
           messageBlocks: [...blocks],
           creationTime: msg.creationTime
         }

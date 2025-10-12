@@ -1,5 +1,5 @@
 import './main.css'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FontFaceObserver from 'fontfaceobserver'
 import { AppContainer, AppContent, AppHeader } from '@renderer/appStyles'
 import { TabEnum, TabEnumType } from './enums/TabEnum'
@@ -10,7 +10,7 @@ import SettingsPage from './pages/SettingsPage'
 import { Provider } from 'react-redux'
 import { store } from '@renderer/store'
 
-function App() {
+function App(): React.JSX.Element | null {
   const [currentTab, setCurrentTab] = useState<TabEnumType>(TabEnum.CHAT)
 
   const [fontsLoaded, setFontsLoaded] = useState(false)

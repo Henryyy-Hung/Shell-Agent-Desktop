@@ -10,7 +10,7 @@ export default defineConfig({
         '@main': resolve('src/main'),
         '@shared': resolve('src/shared')
       }
-    },
+    }
   },
   preload: {
     plugins: [externalizeDepsPlugin()],
@@ -18,7 +18,7 @@ export default defineConfig({
       alias: {
         '@shared': resolve('src/shared')
       }
-    },
+    }
   },
   renderer: {
     resolve: {

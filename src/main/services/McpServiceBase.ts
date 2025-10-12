@@ -114,5 +114,4 @@ abstract class McpServiceBase {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export { McpServiceBase }
