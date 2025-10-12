@@ -15,9 +15,9 @@ const SVGComponent = () => (
         fill: 'none',
         strokeLinecap: 'round',
         strokeLinejoin: 'round',
-        strokeWidth: 2,
+        strokeWidth: 2
       }}
     />
   </svg>
-);
-export default SVGComponent;
+)
+export default SVGComponent

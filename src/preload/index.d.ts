@@ -1,5 +1,5 @@
 import { ElectronAPI } from '@electron-toolkit/preload'
-import {WindowApiType} from "./index";
+import { WindowApiType } from './index'
 
 declare global {
   interface Window {

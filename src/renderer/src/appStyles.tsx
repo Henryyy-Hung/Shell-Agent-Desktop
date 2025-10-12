@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const AppContainer = styled.div`
   border: none;
@@ -11,11 +11,11 @@ export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: stretch;
-`;
+`
 
 export const AppHeader = styled.div`
   flex: 0 0 auto;
-`;
+`
 
 export const AppContent = styled.div`
   flex: 1 1 0;
@@ -27,4 +27,4 @@ export const AppContent = styled.div`
   & > * {
     height: 100%;
   }
-`;
+`

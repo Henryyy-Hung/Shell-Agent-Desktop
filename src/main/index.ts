@@ -1,8 +1,8 @@
-import {app, shell, BrowserWindow} from 'electron'
-import {join} from 'path'
-import {electronApp, optimizer, is} from '@electron-toolkit/utils'
+import { app, shell, BrowserWindow } from 'electron'
+import { join } from 'path'
+import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../build/icon.png?asset'
-import {registerIpc} from './ipcRegistry' // 保留你原来的 IPC 注册
+import { registerIpc } from './ipcRegistry' // 保留你原来的 IPC 注册
 
 function createMainWindow(): void {
   let mainWindow: BrowserWindow | null = new BrowserWindow({
@@ -16,7 +16,7 @@ function createMainWindow(): void {
     maximizable: false,
     transparent: true,
     backgroundColor: '#00000000',
-    ...(process.platform === 'linux' ? {icon} : {}),
+    ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -37,7 +37,7 @@ function createMainWindow(): void {
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
-    return {action: 'deny'}
+    return { action: 'deny' }
   })
 
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {

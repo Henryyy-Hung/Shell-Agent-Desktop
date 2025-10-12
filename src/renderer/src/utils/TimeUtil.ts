@@ -3,14 +3,14 @@ class DateTimeUtil {
    * 获取当前 UTC 毫秒级时间戳
    */
   static utcTimestampMs(): number {
-    return Date.now();
+    return Date.now()
   }
 
   /**
    * 获取当前 UTC 秒级时间戳
    */
   static utcTimestampSec(): number {
-    return Math.floor(Date.now() / 1000);
+    return Math.floor(Date.now() / 1000)
   }
 
   /**
@@ -20,14 +20,14 @@ class DateTimeUtil {
    * 这个方法加上偏移仅在特殊计算场景用。
    */
   static beijingTimestampMs(): number {
-    return Date.now() + 8 * 60 * 60 * 1000;
+    return Date.now() + 8 * 60 * 60 * 1000
   }
 
   /**
    * 获取北京时间(+8) 秒级时间戳
    */
   static beijingTimestampSec(): number {
-    return Math.floor((Date.now() + 8 * 60 * 60 * 1000) / 1000);
+    return Math.floor((Date.now() + 8 * 60 * 60 * 1000) / 1000)
   }
 
   /**
@@ -35,29 +35,23 @@ class DateTimeUtil {
    * @param timestamp 毫秒级时间戳
    * @param fmt 格式模板（可选）
    */
-  static formatToBeijing(
-    timestamp: number,
-    fmt?: Intl.DateTimeFormatOptions,
-  ): string {
+  static formatToBeijing(timestamp: number, fmt?: Intl.DateTimeFormatOptions): string {
     return new Date(timestamp).toLocaleString('zh-CN', {
       timeZone: 'Asia/Shanghai',
-      ...fmt,
-    });
+      ...fmt
+    })
   }
 
   /**
    * 将 ISO 字符串或 Date 转为北京时间字符串
    */
-  static dateToBeijingString(
-    date: Date | string,
-    fmt?: Intl.DateTimeFormatOptions,
-  ): string {
-    const d = typeof date === 'string' ? new Date(date) : date;
+  static dateToBeijingString(date: Date | string, fmt?: Intl.DateTimeFormatOptions): string {
+    const d = typeof date === 'string' ? new Date(date) : date
     return d.toLocaleString('zh-CN', {
       timeZone: 'Asia/Shanghai',
-      ...fmt,
-    });
+      ...fmt
+    })
   }
 }
 
-export { DateTimeUtil };
+export { DateTimeUtil }

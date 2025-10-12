@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const NavContainer = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ export const NavContainer = styled.div`
   background: transparent;
   -webkit-app-region: drag;
   user-select: none;
-`;
+`
 
 export const TabsWrapper = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ export const TabsWrapper = styled.div`
   gap: 4px;
   border-bottom: 1px solid #e8e8e8;
   overflow: hidden;
-`;
+`
 
 export const Tab = styled.div<{ $active?: boolean }>`
   display: flex;
@@ -38,14 +38,14 @@ export const Tab = styled.div<{ $active?: boolean }>`
   &:hover {
     background-color: white;
   }
-`;
+`
 
 export const WindowControls = styled.div`
   display: flex;
   gap: 8px;
   padding: 0 8px;
   -webkit-app-region: no-drag;
-`;
+`
 
 export const ControlCircle = styled.button<{ color: string; $active: boolean }>`
   width: 20px;
@@ -68,8 +68,7 @@ export const ControlCircle = styled.button<{ color: string; $active: boolean }>`
   & svg {
     width: 12px !important;
     height: 12px !important;
-    stroke: ${({ $active }) =>
-      $active ? '#fff' : 'rgba(0,0,0,0.45)'} !important;
+    stroke: ${({ $active }) => ($active ? '#fff' : 'rgba(0,0,0,0.45)')} !important;
     stroke-width: 3px !important;
   }
-`;
+`

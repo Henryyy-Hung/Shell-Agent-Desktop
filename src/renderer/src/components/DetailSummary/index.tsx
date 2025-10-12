@@ -1,36 +1,24 @@
 // DetailSummary.tsx
-import React, { useRef, useState, useEffect } from 'react';
-import IconRight from '@renderer/assets/vectors/IconRight';
-import {
-  Container,
-  SummaryRow,
-  Name,
-  Status,
-  Arrow,
-  ContentWrapper,
-  ContentInner,
-} from './styles';
+import React, { useRef, useState, useEffect } from 'react'
+import IconRight from '@renderer/assets/vectors/IconRight'
+import { Container, SummaryRow, Name, Status, Arrow, ContentWrapper, ContentInner } from './styles'
 
 interface DetailSummaryProps {
-  name: string;
-  status: string;
-  detailText: string;
+  name: string
+  status: string
+  detailText: string
 }
 
-export const DetailSummary: React.FC<DetailSummaryProps> = ({
-  name,
-  status,
-  detailText,
-}) => {
-  const [open, setOpen] = useState(false);
-  const [height, setHeight] = useState(0);
-  const contentRef = useRef<HTMLDivElement>(null);
+export const DetailSummary: React.FC<DetailSummaryProps> = ({ name, status, detailText }) => {
+  const [open, setOpen] = useState(false)
+  const [height, setHeight] = useState(0)
+  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (contentRef.current) {
-      setHeight(contentRef.current.scrollHeight);
+      setHeight(contentRef.current.scrollHeight)
     }
-  }, [detailText]);
+  }, [detailText])
 
   return (
     <Container>
@@ -45,5 +33,5 @@ export const DetailSummary: React.FC<DetailSummaryProps> = ({
         <ContentInner ref={contentRef}>{detailText}</ContentInner>
       </ContentWrapper>
     </Container>
-  );
-};
+  )
+}

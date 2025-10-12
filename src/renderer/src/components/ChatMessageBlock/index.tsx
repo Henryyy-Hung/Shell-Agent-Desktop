@@ -1,5 +1,5 @@
-import React from 'react';
-import { ChatContentTypeEnum } from '@renderer/enums/ChatContentTypeEnum';
+import React from 'react'
+import { ChatContentTypeEnum } from '@renderer/enums/ChatContentTypeEnum'
 import {
   Avatar,
   Desc,
@@ -8,15 +8,12 @@ import {
   SessionCreationTime,
   SessionInfo,
   SessionMessages,
-  SessionName,
-} from '@renderer/components/ChatMessageBlock/styles';
-import { ChatMessageVO } from '@renderer/types/view/ChatMessageVO';
-import { DetailSummary } from '@renderer/components/DetailSummary';
-import { DateTimeUtil } from '@renderer/utils/TimeUtil';
-import {
-  ChatSessionEnum,
-  ChatSessionEnumType,
-} from '@renderer/enums/ChatSessionEnum';
+  SessionName
+} from '@renderer/components/ChatMessageBlock/styles'
+import { ChatMessageVO } from '@renderer/types/view/ChatMessageVO'
+import { DetailSummary } from '@renderer/components/DetailSummary'
+import { DateTimeUtil } from '@renderer/utils/TimeUtil'
+import { ChatSessionEnum, ChatSessionEnumType } from '@renderer/enums/ChatSessionEnum'
 
 const sessionNameMap: Record<ChatSessionEnumType, string> = {
   [ChatSessionEnum.SYSTEM_PROMPT]: '系统提示词',
@@ -25,12 +22,12 @@ const sessionNameMap: Record<ChatSessionEnumType, string> = {
   [ChatSessionEnum.AGENT_PROJECT_MANAGER]: '项目经理',
   [ChatSessionEnum.AGENT_FRONTLINE_ENGINEER]: '一线工程师',
   [ChatSessionEnum.AGENT_SENIOR_ENGINEER]: '高级工程师',
-  [ChatSessionEnum.AGENT_ARCHIVE_ADMIN]: '档案管理员',
-};
+  [ChatSessionEnum.AGENT_ARCHIVE_ADMIN]: '档案管理员'
+}
 
 type MessageBlockProps = {
-  message: ChatMessageVO;
-};
+  message: ChatMessageVO
+}
 
 const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
   return (
@@ -55,7 +52,7 @@ const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
                   status="已完成"
                   detailText={block.innerContent}
                 />
-              );
+              )
             case ChatContentTypeEnum.PLAN:
               return (
                 <DetailSummary
@@ -64,7 +61,7 @@ const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
                   status="已完成"
                   detailText={block.innerContent}
                 />
-              );
+              )
             case ChatContentTypeEnum.TOOL_USE:
               return (
                 <DetailSummary
@@ -73,7 +70,7 @@ const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
                   status="已完成"
                   detailText={block.innerContent}
                 />
-              );
+              )
             case ChatContentTypeEnum.TOOL_USE_RESULT:
               return (
                 <DetailSummary
@@ -82,24 +79,16 @@ const ChatMessageBlock: React.FC<MessageBlockProps> = ({ message }) => {
                   status="已完成"
                   detailText={block.innerContent}
                 />
-              );
+              )
             case ChatContentTypeEnum.FINAL_ANSWER:
-              return (
-                <MarkdownBlock key={block.id}>
-                  {block.innerContent}
-                </MarkdownBlock>
-              );
+              return <MarkdownBlock key={block.id}>{block.innerContent}</MarkdownBlock>
             default:
-              return (
-                <MarkdownBlock key={block.id}>
-                  {block.rawContent}
-                </MarkdownBlock>
-              );
+              return <MarkdownBlock key={block.id}>{block.rawContent}</MarkdownBlock>
           }
         })}
       </SessionMessages>
     </MessageContainer>
-  );
-};
+  )
+}
 
-export default ChatMessageBlock;
+export default ChatMessageBlock
