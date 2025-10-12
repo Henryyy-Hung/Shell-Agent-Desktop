@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 
 export const ChatInputFieldContainer = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ export const ChatInputFieldContainer = styled.div`
   > * {
     flex: 0 0 auto;
   }
-`;
+`
 
 export const StyledTextArea = styled.div`
   flex: 1 1 auto;
@@ -44,7 +44,7 @@ export const StyledTextArea = styled.div`
   &::-webkit-input-placeholder {
     color: #b6b6b6;
   }
-`;
+`
 
 export const OperationArea = styled.div`
   flex: 0 0 auto;
@@ -52,7 +52,7 @@ export const OperationArea = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 0.25rem;
-`;
+`
 
 export const OperationButton = styled.button<{ disabled?: boolean }>`
   width: 2rem;
@@ -86,8 +86,8 @@ export const OperationButton = styled.button<{ disabled?: boolean }>`
         fill: var(--primary-color-300) !important;
       }
     `}
-`;
+`
 // SendButton 继承通用样式并添加特定的 margin-left
 export const SendButton = styled(OperationButton)`
   margin-left: auto;
-`;
+`

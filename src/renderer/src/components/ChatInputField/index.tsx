@@ -1,56 +1,51 @@
-import React, { useState } from 'react';
-import IconPaperAirplane from '@renderer/assets/vectors/IconPaperAirplane';
-import AutoHeightTextArea from '@renderer/components/AutoHeightTextArea';
-import IconAtSign from '@renderer/assets/vectors/IconAtSign';
-import IconEarth from '@renderer/assets/vectors/IconEarth';
+import React, { useState } from 'react'
+import IconPaperAirplane from '@renderer/assets/vectors/IconPaperAirplane'
+import AutoHeightTextArea from '@renderer/components/AutoHeightTextArea'
+import IconAtSign from '@renderer/assets/vectors/IconAtSign'
+import IconEarth from '@renderer/assets/vectors/IconEarth'
 import {
   ChatInputFieldContainer,
   StyledTextArea,
   SendButton,
   OperationArea,
-  OperationButton,
-} from './styles';
+  OperationButton
+} from './styles'
 
 interface ChatInputFieldProps {
-  messageSubmitEnabled: boolean;
-  onSubmit: (content: string) => void;
+  messageSubmitEnabled: boolean
+  onSubmit: (content: string) => void
 }
 
-const ChatInputField: React.FC<ChatInputFieldProps> = ({
-  messageSubmitEnabled,
-  onSubmit,
-}) => {
-  const [textContent, setTextContent] = useState<string>('');
+const ChatInputField: React.FC<ChatInputFieldProps> = ({ messageSubmitEnabled, onSubmit }) => {
+  const [textContent, setTextContent] = useState<string>('')
 
   const onSendMessageTriggered = (): void => {
     // get the text content
-    const content = textContent;
+    const content = textContent
     // check if the content is empty
     if (content.trim() === '') {
-      return;
+      return
     }
     // check if the messages is an array
     if (!messageSubmitEnabled) {
-      return;
+      return
     }
     // clear the textarea
-    setTextContent('');
+    setTextContent('')
     // submit the message
-    onSubmit(content);
-  };
+    onSubmit(content)
+  }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>): void => {
     if (e.key === 'Enter' && e.ctrlKey) {
-      e.preventDefault();
-      onSendMessageTriggered();
+      e.preventDefault()
+      onSendMessageTriggered()
     }
-  };
+  }
 
-  const handleTextChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement>,
-  ): void => {
-    setTextContent(e.target.value);
-  };
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    setTextContent(e.target.value)
+  }
 
   return (
     <ChatInputFieldContainer as="form">
@@ -68,16 +63,12 @@ const ChatInputField: React.FC<ChatInputFieldProps> = ({
         <OperationButton type="button">
           <IconAtSign />
         </OperationButton>
-        <SendButton
-          disabled={!messageSubmitEnabled}
-          onClick={onSendMessageTriggered}
-          type="button"
-        >
+        <SendButton disabled={!messageSubmitEnabled} onClick={onSendMessageTriggered} type="button">
           <IconPaperAirplane />
         </SendButton>
       </OperationArea>
     </ChatInputFieldContainer>
-  );
-};
+  )
+}
 
-export default ChatInputField;
+export default ChatInputField

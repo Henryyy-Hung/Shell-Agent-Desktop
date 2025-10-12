@@ -1,6 +1,5 @@
 export const McpServerNameEnum = {
-  REMOTE_SHELL_TOOLKIT: 'remote-shell-toolkit',
-} as const;
+  REMOTE_SHELL_TOOLKIT: 'remote-shell-toolkit'
+} as const
 
-export type McpServerNameEnumType =
-  (typeof McpServerNameEnum)[keyof typeof McpServerNameEnum];
+export type McpServerNameEnumType = (typeof McpServerNameEnum)[keyof typeof McpServerNameEnum]

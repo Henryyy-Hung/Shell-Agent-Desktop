@@ -1,13 +1,13 @@
-import { MessageRoleEnumType } from '@renderer/enums/MessageRoleEnum';
-import { ChatSessionEnumType } from '@renderer/enums/ChatSessionEnum';
-import { ChatMessageBlockVO } from '@renderer/types/view/ChatMessageBlockVO';
+import { MessageRoleEnumType } from '@renderer/enums/MessageRoleEnum'
+import { MessageOwnerEnumType } from '@renderer/enums/MessageOwnerEnum'
+import { ChatMessageBlockVO } from '@renderer/types/view/ChatMessageBlockVO'
 
 interface ChatMessageVO {
-  id: string;
-  role: MessageRoleEnumType;
-  session: ChatSessionEnumType;
-  messageBlocks: ChatMessageBlockVO[];
-  creationTime: number;
+  id: string
+  role: MessageRoleEnumType
+  owner: MessageOwnerEnumType
+  messageBlocks: ChatMessageBlockVO[]
+  creationTime: number
 }
 
-export type { ChatMessageVO };
+export type { ChatMessageVO }

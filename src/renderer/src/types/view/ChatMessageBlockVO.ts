@@ -1,10 +1,10 @@
-import { ChatContentTypeEnumType } from '@renderer/enums/ChatContentTypeEnum';
+import { ChatContentTypeEnumType } from '@renderer/enums/ChatContentTypeEnum'
 
 interface ChatMessageBlockVO {
-  id: string;
-  type: ChatContentTypeEnumType;
-  rawContent: string;
-  innerContent: string;
+  id: string
+  type: ChatContentTypeEnumType
+  rawContent: string
+  innerContent: string
 }
 
-export type { ChatMessageBlockVO };
+export type { ChatMessageBlockVO }

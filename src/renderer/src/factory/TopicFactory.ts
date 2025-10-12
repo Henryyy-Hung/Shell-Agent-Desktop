@@ -1,5 +1,5 @@
-import IdUtil from '@renderer/utils/IdUtil';
-import { Topic } from '@renderer/types/domain/Topic';
+import IdUtil from '@renderer/utils/IdUtil'
+import { Topic } from '@renderer/types/domain/Topic'
 
 export class TopicFactory {
   /**
@@ -12,7 +12,7 @@ export class TopicFactory {
       messageIds: [],
       isProcessing: false,
       creationTime: Date.now(),
-      updateTime: Date.now(),
-    };
+      updateTime: Date.now()
+    }
   }
 }

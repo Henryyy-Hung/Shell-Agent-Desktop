@@ -15,5 +15,5 @@ const SVGComponent = () => (
     <path d="M9 3v5l-2 4v2h10m0 0h-5m5 0v-2l-2-4V3" />
     <path d="M7 3h10" />
   </svg>
-);
-export default SVGComponent;
+)
+export default SVGComponent

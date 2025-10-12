@@ -18,9 +18,9 @@ const IpcChannel = {
   Mcp_AbortTool: 'mcp:abort-tool',
   Mcp_ConnectAll: 'mcp:connect-all',
   Mcp_DisconnectAll: 'mcp:disconnect-all',
-  Mcp_RestartAll: 'mcp:restart-all',
-} as const;
+  Mcp_RestartAll: 'mcp:restart-all'
+} as const
 
-export type IpcChannelType = (typeof IpcChannel)[keyof typeof IpcChannel];
+export type IpcChannelType = (typeof IpcChannel)[keyof typeof IpcChannel]
 
-export { IpcChannel };
+export { IpcChannel }

@@ -1,12 +1,12 @@
-import { electronAPI } from '@electron-toolkit/preload';
-import { contextBridge } from 'electron';
-import { windowApi } from './api/windowApi';
-import mcpApi from './api/mcpApi';
+import { electronAPI } from '@electron-toolkit/preload'
+import { contextBridge } from 'electron'
+import { windowApi } from './api/windowApi'
+import mcpApi from './api/mcpApi'
 
 const api = {
   window: windowApi,
-  mcp: mcpApi,
-};
+  mcp: mcpApi
+}
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
@@ -25,4 +25,4 @@ if (process.contextIsolated) {
   window.api = api
 }
 
-export type WindowApiType = typeof api;
+export type WindowApiType = typeof api
